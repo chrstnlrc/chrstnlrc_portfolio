@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Christine's Portfolio</title>
+
+  <!-- Font Awesome & AOS CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/aos@next/dist/aos.css"
+  />
+
+  <!-- All styles in one place -->
+  <style>
+    /* RESET & GLOBAL */
+    * {
+    padding: 0;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
+    }
+
+    html{
+    overflow-x: hidden;
+    }
+
+    body{
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(to right, rgb(255,255,255), rgb(255, 253, 142));
+    }
+
+    /* NAVIGATION */
+    nav{
+    width: 100%;
+    height: 10vh;
+    position: sticky;
+    }
+
+    .nav-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    }
+
+    .logo{
+    color: black;
+    font-size: 2rem;
+    font-weight: bolder;
+    }
+
+    .logo span{
+    color: rgb(109,67, 0);
+    text-shadow: 0 0 10px rgb(109,67, 0);
+    }
+
+    .hamburg, .cancel{
+    cursor: pointer;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    color: black;
+    font-size: 2rem;
+    display: none;
+    }
+
+    .nav-container .links {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    }
+
+    .nav-container .links a{
+    position: relative;
+    font-size: 1.2rem;
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+    transform: 0.3s linear;
+    }
+
+    .nav-container .links a::before{
+    position: absolute;
+    content: "";
+    bottom: -3px;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background-color: rgb(109,67, 0);
+    transition: 0.2s linear;
+    }
+
+    .nav-container .links a:hover::before{
+    width: 100%;
+    }
+    .desktop-only { display: flex; }
+    .mobile-only { display: none; }
+
+    .dropdown {
+      position: fixed;
+      top: -100%;
+      left: 0;
+      width: 100%;
+      background: #fff;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 0;
+      transition: top 0.3s ease-in-out;
+      display: flex;
+    }
+    .dropdown a {
+      margin: 1rem 0;
+      text-decoration: none;
+      color: #333;
+      font-size: 1.1rem;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      padding-top: 80px; /* offset for fixed nav */
+    }
+    .main-container {
+      max-width: 1100px;
+      margin: 4rem auto;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .image img {
+      max-width: 300px;
+      border-radius: 10px;
+    }
+    .content h1 {
+      font-size: 2.5rem;
+    }
+    .content h1 span {
+      color: #ffc107;
+    }
+    .text-section {
+      width: 50%;
+      text-align: center;
+      padding-left: 100px;
+    }
+
+    .text-section p {
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #2e1e10;
+    }
+    .social-links a {
+      margin-right: 1rem;
+      font-size: 1.4rem;
+      color: #333;
+      transition: color 0.2s;
+    }
+    .social-links a:hover { color: #ffc107; }
+    .btn button {
+      padding: 0.7rem 1.5rem;
+      background: #ffc107;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn button:hover { background: #e6ac00; }
+
+    /* FEATURES GRID */
+    .features {
+      max-width: 800px;
+      margin: 4rem auto;
+      text-align: center;
+      justify-content: center;
+      padding-top: 5%;
+    
+    }
+    .features h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    .container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 1.2rem;
+    }
+    .box {
+      padding: 1.5rem;
+      background-color: #ffeb3b;
+      border-radius: 15px;
+      font-weight: 600;
+      transition: transform 0.2s;
+    }
+    .box:hover { transform: translateY(-5px); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .desktop-only { display: none; }
+      .mobile-only { display: flex; }
+      .main-container {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAV -->
+  <nav>
+    <div class="nav-container">
+      <div class="logo" data-aos="zoom-in" data-aos-duration="1000">
+        <span>SKILLS</span>
+      </div>
+      <div class="links desktop-only">
+        <a href="index.html" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">Home</a>
+        <a href="about.html" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">About</a>
+        <a href="work.html" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">Work Experience</a>
+        <a href="skills.html" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">Skills</a>
+        <a href="contact.html" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">Contact</a>
+      </div>
+      <i class="fa-solid fa-bars hamburg mobile-only" onclick="openMenu()"></i>
+    </div>
+    <div class="dropdown mobile-only">
+      <i class="fa-solid fa-xmark cancel" onclick="closeMenu()"></i>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="work.html">Work Experience</a>
+      <a href="skills.html">Skills</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <!-- FEATURES GRID -->
+  <section class="features" data-aos="fade-up" data-aos-duration="1200">
+    <h2>What I Offer</h2>
+    <div class="container">
+        <div class="box">Strong Attention to Detail</div>
+        <div class="box">Data Entry</div>
+        <div class="box">Efficient Time Management</div>
+        <div class="box">Effieciency Under Pressure</div>
+        <div class="box">Problem-solving</div>
+        <div class="box">Critical Thinking</div>
+        <div class="box">Computer Literate</div>
+        <div class="box">Active Listening</div>
+        <div class="box">Can Take Criticisms</div>
+    </div>
+  </section>
+
+  <!-- AOS & MENU SCRIPTS -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({ offset: 0 });
+    function openMenu() {
+      document.querySelector(".dropdown").style.top = "0";
+    }
+    function closeMenu() {
+      document.querySelector(".dropdown").style.top = "-100%";
+    }
+  </script>
+</body>
+</html>

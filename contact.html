@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Christine's Portfolio</title>
+
+  <!-- FontAwesome & AOS -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/aos@next/dist/aos.css"
+  />
+
+  <style>
+    /* RESET & GLOBAL */
+    *{
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+html{
+    overflow-x: hidden;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(to right, rgb(255,255,255), rgb(255, 253, 142));
+}
+
+nav{
+    width: 100%;
+    height: 10vh;
+    position: sticky;
+}
+
+
+.nav-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.logo{
+    color: black;
+    font-size: 2rem;
+    font-weight: bolder;
+}
+
+.logo span{
+    color: rgb(109,67, 0);
+    text-shadow: 0 0 10px rgb(109,67, 0);
+}
+
+.hamburg, .cancel{
+    cursor: pointer;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    color: black;
+    font-size: 2rem;
+    display: none;
+}
+
+.nav-container .links {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+}
+
+.nav-container .links a{
+    position: relative;
+    font-size: 1.2rem;
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+    transform: 0.3s linear;
+}
+
+.nav-container .links a::before{
+    position: absolute;
+    content: "";
+    bottom: -3px;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background-color: rgb(109,67, 0);
+    transition: 0.2s linear;
+}
+
+.nav-container .links a:hover::before{
+    width: 100%;
+}
+
+.nav-container .contact-btn{
+    background-color: transparent;
+    padding: 5px 20px;
+    border-radius: 20px;
+    border: 2px solid rgb(109,67, 0);
+    transition: 0.2s linear;
+}
+
+.nav-container .contact-btn a{
+    color: white;
+    transition: 0.3s linear;
+}
+
+.nav-container .contact-btn:hover, .nav-container .contact-btn:hover a{
+    background-color: rgb(109,67, 0);
+    color: white;
+}
+
+.nav-container .links a:hover{
+    color: rgb(109,67, 0);
+}
+
+.dropdown{
+    z-index: 100;
+    position: absolute;
+    top: 0;
+    transform: translateY(-500px);
+    width: 100%;
+    height: auto;
+    backdrop-filter: brightness(40%) blur(3px);
+    box-shadow: 0 0 20px black;
+    transition: 0.2s linear;
+}
+
+.dropdown .links a{
+    color: white;
+    display: flex;
+    text-decoration: none;
+    justify-content: center;
+    padding: 15px 0;
+    align-items: center;
+    transition: 0.2s linear;
+}
+
+.dropdown .links a:hover{
+    background-color: rgb(109,67, 0);
+}
+
+    /* CONTACT SECTION */
+    .contact-section {
+        padding: 4rem 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
+        margin-top: 15mm;
+    }
+    .contact-card {
+      width: 100%;
+      max-width: 500px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      overflow: hidden;
+      text-align: center;
+    }
+    .contact-card header {
+      background: #6d4300;
+      color: #fff;
+      padding: 1.5rem;
+    }
+    .contact-card header h2 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+    .contact-list {
+      list-style: none;
+      padding: 1.5rem;
+    }
+    .contact-list li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .contact-list li:last-child {
+      margin-bottom: 0;
+    }
+    .contact-list i {
+      width: 30px;
+      text-align: center;
+      color: #6d4300;
+      font-size: 1.25rem;
+    }
+    .contact-list .info {
+      margin-left: .75rem;
+      font-size: 1rem;
+      color: #333;
+      text-align: left;
+      word-break: break-word;
+      flex: 1;
+    }
+    .contact-list .info a {
+      color: #333;
+      text-decoration: none;
+    }
+    .contact-list .info a:hover {
+      text-decoration: underline;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .desktop-only { display: none; }
+      .mobile-only  { display: block; }
+      .hamburg, .cancel { display: block; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-container">
+      <div class="logo" data-aos="zoom-in" data-aos-duration="1000">
+        <span>Christine Laurice</span>
+      </div>
+
+      <div class="links desktop-only">
+        <a href="index.html" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">Home</a>
+        <a href="about.html" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">About</a>
+        <a href="work.html" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">Work Experience</a>
+        <a href="skills.html" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">Skills</a>
+        <a href="contact.html" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">Contact</a>
+      </div>
+
+      <i class="fa-solid fa-bars hamburg mobile-only" onclick="openMenu()"></i>
+      <i class="fa-solid fa-xmark cancel mobile-only" onclick="closeMenu()"></i>
+    </div>
+
+    <div class="dropdown mobile-only">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="work.html">Work Experience</a>
+      <a href="skills.html">Skills</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <!-- CONTACT ME -->
+  <section class="contact-section" data-aos="fade-up" data-aos-duration="1200">
+    <div class="contact-card">
+      <header>
+        <h2>Contact Me</h2>
+      </header>
+      <ul class="contact-list">
+        <li>
+          <i class="fa-solid fa-phone"></i>
+          <div class="info">
+            <a href="Phone:+63 912 3456 789">+63 927 1190 108</a>
+          </div>
+        </li>
+        <li>
+          <i class="fa-solid fa-envelope"></i>
+          <div class="info">
+            <a href="mailto:11.christinelaurice@gmail.com" target="_blank" rel="noopener noreferrer">11.christinelaurice@gmail.com</a>
+          </div>
+        </li>
+        <li>
+          <i class="fa-solid fa-location-dot"></i>
+          <div class="info">
+            Sitio Amianan, Burgos, La Union, Philippines
+          </div>
+        </li>
+        <li>
+          <i class="fa-brands fa-linkedin"></i>
+          <div class="info">
+              linkedin.com/in/achristinelaurice
+          </div>
+        </li>
+        <li>
+            <i class="fa-brands fa-facebook"></i>
+          <div class="info">
+            https://www.facebook.com/achrsntl
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SCRIPTS -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({ offset: 0 });
+    function openMenu() {
+      document.querySelector(".dropdown").style.top = "60px";
+    }
+    function closeMenu() {
+      document.querySelector(".dropdown").style.top = "-100%";
+    }
+  </script>
+</body>
+</html>

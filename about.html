@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Christine's Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    html {
+      overflow: hidden;
+    }
+
+    body{
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(to right, rgb(255,255,255), rgb(255, 253, 142));
+    }
+
+    /* === NAVIGATION BAR === */
+    nav {
+      width: 100%;
+      height: 10vh;
+      position: sticky;
+      z-index: 999;
+    }
+
+    .nav-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .logo span {
+      font-size: 2rem;
+      font-weight: bold;
+      color: rgb(109, 67, 0);
+      text-shadow: 0 0 10px rgb(109, 67, 0);
+    }
+
+    .links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .link a {
+      text-decoration: none;
+      color: black;
+      font-weight: 500;
+      font-size: 1.2rem;
+      position: relative;
+    }
+
+    .link a::before {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background-color: rgb(109, 67, 0);
+      bottom: -2px;
+      left: 0;
+      transition: 0.3s ease;
+    }
+
+    .link a:hover::before {
+      width: 100%;
+    }
+
+    .hamburg, .cancel {
+      cursor: pointer;
+      position: absolute;
+      right: 15px;
+      top: 15px;
+      color: black;
+      font-size: 2rem;
+      display: none;
+    }
+
+    .dropdown {
+      z-index: 100;
+      position: absolute;
+      top: 0;
+      transform: translateY(-500px);
+      width: 100%;
+      backdrop-filter: brightness(40%) blur(3px);
+      transition: 0.3s ease;
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    .dropdown .links a {
+      color: white;
+      display: block;
+      padding: 15px;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .dropdown .links a:hover {
+      background-color: rgb(109, 67, 0);
+    }
+
+    /* === MAIN CONTENT === */
+    .container {
+      display: flex;
+      height: 90vh;
+      padding: 20px 40px;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .text-section {
+      width: 50%;
+      text-align: justify;
+      padding-left: 100px;
+    }
+
+    .text-section p {
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #2e1e10;
+    }
+
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 15px;
+      width: auto;
+      margin-right: 1in;
+      animation: fadeIn 1s ease-in-out;
+      justify-content: space-evenly;
+      
+    }
+
+    .image-grid img {
+      width: 2in;
+      height: 2in;
+      object-fit: fit;
+      border: 2px solid #ccc;
+      transition: transform 0.3s ease;
+    }
+
+    .image-grid img:hover {
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      html, body {
+        overflow-y: auto;
+      }
+
+      .container {
+        flex-direction: column;
+        height: auto;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .text-section, .image-grid {
+        width: 100%;
+        margin-right: 0;
+      }
+
+      .image-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+        justify-content: center;
+        margin-top: 30px;
+      }
+
+      .hamburg {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <div class="logo" data-aos="zoom-in" data-aos-duration="1000">
+        <span>ABOUT ME</span>
+      </div>
+      <div class="links">
+        <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100"><a href="index.html">Home</a></div>
+        <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200"><a href="about.html">About</a></div>
+        <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400"><a href="work.html">Work Experience</a></div>
+        <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300"><a href="skills.html">Skills</a></div>
+        <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500"><a href="contact.html">Contact</a></div>
+      </div>
+      <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
+    </div>
+    <div class="dropdown">
+      <div class="links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="work.html">Work Experience</a>
+        <a href="skills.html">Skills</a>
+        <a href="contact.html">Contact</a>
+        <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="text-section">
+      <p>I am Christine Laurice A. Gapasin. I am 23 years old. My college degree is Bachelor of Science in Computer Engineering.</p>
+      <p>I am the eldest among my siblings. I enjoy writing poems whenever I feel bored. I am also interested in anything technology. Whenever I am curious about something, I tend to search about it and try to digest the information I just acquired.</p>
+      <p>I enjoy working on projects that challenge me to grow and learn something new every day.</p>
+      <p>I also love to travel. Whenever I am travelling, I bring with me my camera for me to capture the sceneries along the way.</p>
+
+    </div>
+    <div class="image-grid">
+      <img src="1.jpg" alt="">
+      <img src="2.jpg" alt="">
+      <img src="3.jpg" alt="">
+      <img src="4.jpg" alt="">
+      <img src="5.jpg" alt="">
+      <img src="6.jpg" alt="">
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({ offset: 0 });
+    function hamburg() {
+      document.querySelector(".dropdown").style.transform = "translateY(0px)";
+    }
+    function cancel() {
+      document.querySelector(".dropdown").style.transform = "translateY(-500px)";
+    }
+  </script>
+
+</body>
+</html>

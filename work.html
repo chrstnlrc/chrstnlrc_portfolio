@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Christine's Portfolio</title>
+
+  <!-- FontAwesome & AOS -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/aos@next/dist/aos.css"
+  />
+
+  <style>
+    /* RESET & GLOBAL */
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
+    }
+
+    html{
+    overflow-x: hidden;
+    }
+
+    body{
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(to right, rgb(255,255,255), rgb(255, 253, 142));
+    }
+
+    /* NAVIGATION */
+    nav{
+    width: 100%;
+    height: 10vh;
+    position: sticky;
+    }
+
+    .nav-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    }
+
+    .logo{
+    color: black;
+    font-size: 2rem;
+    font-weight: bolder;
+    }
+
+    .logo span{
+    color: rgb(109,67, 0);
+    text-shadow: 0 0 10px rgb(109,67, 0);
+    }
+
+    .hamburg, .cancel{
+    cursor: pointer;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    color: black;
+    font-size: 2rem;
+    display: none;
+    }
+
+    .nav-container .links {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    }
+
+    .nav-container .links a{
+    position: relative;
+    font-size: 1.2rem;
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+    transform: 0.3s linear;
+    }
+
+    .nav-container .links a::before{
+    position: absolute;
+    content: "";
+    bottom: -3px;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background-color: rgb(109,67, 0);
+    transition: 0.2s linear;
+    }
+
+    .nav-container .links a:hover::before{
+    width: 100%;
+    }
+    .desktop-only { display: flex; }
+    .mobile-only { display: none; }
+
+    .dropdown {
+      position: fixed;
+      top: -100%;
+      left: 0;
+      width: 100%;
+      background: #fff;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 0;
+      transition: top 0.3s ease-in-out;
+      display: flex;
+    }
+    .dropdown a {
+      margin: 1rem 0;
+      text-decoration: none;
+      color: #333;
+      font-size: 1.1rem;
+    }
+
+    /* RECTANGLES */
+    .rectangles {
+      padding-top: 10vh;               /* drop below nav */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5rem;
+      flex-wrap: wrap;
+    }
+    .column {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    .small-rect {
+      width: 3in; height: 1in;
+      background: #ffeb3b;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: .5rem;
+      font-weight: Bolder;
+    }
+    .large-rect {
+      width: 8in; height: 2.5in;
+      background: #ffc107;
+      border-radius: 10px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;       /* vertical center */
+      /* children will stretch to full width */
+    }
+    /* text inside large-rect */
+    .large-rect h3 {
+      margin-bottom: .5rem;
+      text-align: center;
+      color: #333;
+    }
+    .large-rect ul,
+    .large-rect p {
+      text-align: justify;
+      margin-bottom: 1rem;
+      color: #222;
+    }
+    .large-rect ul {
+      list-style-type: disc;
+      list-style-position: inside;
+      padding-left: 1rem;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .desktop-only { display: none; }
+      .mobile-only  { display: block; }
+      .hamburg, .cancel { display: block; }
+      .rectangles {
+        flex-direction: column;
+        gap: 3rem;
+        padding-top: 10vh;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-container">
+      <div class="logo" data-aos="zoom-in" data-aos-duration="1000">
+        <span>WORK EXPERIENCE</span>
+      </div>
+      <div class="links desktop-only">
+        <a href="index.html" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">Home</a>
+        <a href="about.html" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">About</a>
+        <a href="work.html" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">Work Experience</a>
+        <a href="skills.html" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">Skills</a>
+        <a href="contact.html" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">Contact</a>
+      </div>
+      <i class="fa-solid fa-bars hamburg mobile-only" onclick="openMenu()"></i>
+    </div>
+    <div class="dropdown mobile-only">
+      <i class="fa-solid fa-xmark cancel" onclick="closeMenu()"></i>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="work.html">Work Experience</a>
+      <a href="skills.html">Skills</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <!-- RECTANGLES SECTION -->
+  <section class="rectangles" data-aos="fade-up" data-aos-duration="1200">
+    <div class="column">
+      <div class="small-rect">Project-based Data Encoder</div>
+      <div class="small-rect">On-The-Job Trainee</div>
+    </div>
+    <div class="column">
+      <div class="large-rect">
+        <h3>Accomplishments & Contributions</h3>
+        <ul>
+          <li>Encoding and reporting sales</li>
+          <li>Prepared source data by compiling and sorting information</li>
+          <li>Contributed to team effort by accomplishing related results as needed</li>
+        </ul>
+        <h3>Summary of Duties</h3>
+        <p>
+          Responsible for encoding and reporting sales, maintaining the database
+          (entering new/updated customer and account information), and processing
+          source documents (reviewing for deficiencies, resolving discrepancies).
+          Secured information via database backups, received/recorded official
+          documents, and maintained complete records for reporting.
+        </p>
+      </div>
+
+      <div class="large-rect">
+        <h3>Accomplishments & Contributions</h3>
+        <ul>
+          <li>Developed system for tracking authority-to-travel files</li>
+          <li>Created Excel file for generating multiple QR codes</li>
+          <li>Provided technical assistance during Division Training Center events</li>
+          <li>Crimped Ethernet cables and cleaned/troubleshot CPUs</li>
+          <li>Visited schools for National Learning Camp observations</li>
+          <li>Installed required software on laptops for Learning Camp</li>
+        </ul>
+        <h3>Summary of Duties</h3>
+        <p>
+          Managed office technologies, provided technical assistance
+          and troubleshooting for employee systems, and ensured all
+          computers functioned properly.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AOS & MENU SCRIPTS -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({ offset: 0 });
+    function openMenu() {
+      document.querySelector('.dropdown').style.top = '0';
+    }
+    function closeMenu() {
+      document.querySelector('.dropdown').style.top = '-100%';
+    }
+  </script>
+</body>
+</html>
